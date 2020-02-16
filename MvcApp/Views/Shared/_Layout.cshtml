@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/Site.css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar bg-light">
+        <div class="row">
+            <div class="col-3">
+                <img class="img-fluid" src="~/Content/photo1.jpg" />
+            </div>
+            <div class="col-2"></div>
+            <div class="col-7 justify-content-center">
+                <h1>AdminsArea</h1>
+            </div>
+        </div>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                @Html.ActionLink("Главная", "Index", "Page", new { @class = "page-link" })
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("Добавить комментарий", "Guest", "Page", new { @class = "page-link" })
+
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("Комментарии", "ShowGuest", "Page", new { @class = "page-link" })
+
+            </li>
+
+            <li class="nav-item">
+                @Html.ActionLink("Добавить пользователя", "Profile", "Page", new { @class = "page-link" })
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("Пользователи", "ShowProfile", "Page", new { @class = "page-link" })
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("Добавить статью", "AddArticle", "Page", new { @class = "page-link" })
+            </li>
+        </ul>
+        
+    </nav>
+    <main class="main">
+        <div class="row">
+
+            @RenderBody()
+
+        </div>
+    </main>
+    <footer class="navbar bg-dark">
+        <div class="container">
+
+            <p class="float-left">© Kovalenko Evgeniy</p>
+            <p class="float-right">
+                <a href="#">Back to top</a>
+            </p>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

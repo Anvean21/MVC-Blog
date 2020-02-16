@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MvcApp.Models.ViewModels.Profiles.PersonVM>
+@{
+    ViewBag.Title = "ShowGuest";
+}
+   
+    <div class="col-sm-8 my-item divcolor">
+        <h4>
+            А что ты думаешь? Оставь свой
+            @Html.ActionLink("комментарий", "Guest", "Page")
+        </h4>
+        <div class="list-group">
+            @foreach (var b in Model)
+            {
+
+                <button type="button" class="list-group-item list-group-item-action">
+                    <p class="text-black-50">@b.Name <br /> @b.Text</p>
+                </button>
+
+            }
+        </div>
+    </div>
+<div class="col-2 my-item divcolor">
+    
+    
+</div>
+

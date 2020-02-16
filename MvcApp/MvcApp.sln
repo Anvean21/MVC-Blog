@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApp", "MvcApp.csproj", "{33EB9A1E-E062-4BC5-A6CB-52AB22E9017B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApp.Domain", "..\MvcApp.Domain\MvcApp.Domain.csproj", "{F8F029F1-6DBF-4219-A345-AF0D215D9862}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33EB9A1E-E062-4BC5-A6CB-52AB22E9017B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33EB9A1E-E062-4BC5-A6CB-52AB22E9017B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33EB9A1E-E062-4BC5-A6CB-52AB22E9017B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33EB9A1E-E062-4BC5-A6CB-52AB22E9017B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8F029F1-6DBF-4219-A345-AF0D215D9862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F029F1-6DBF-4219-A345-AF0D215D9862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F029F1-6DBF-4219-A345-AF0D215D9862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F029F1-6DBF-4219-A345-AF0D215D9862}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F21E480-2C22-4AC5-9CC0-96489C0DFC99}
+	EndGlobalSection
+EndGlobal

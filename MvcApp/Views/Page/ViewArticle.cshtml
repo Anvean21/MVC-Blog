@@ -1,0 +1,40 @@
+﻿@model MvcApp.Models.ViewModels.Profiles.ArticleVM
+
+@{
+    ViewBag.Title = "ViewArticle";
+}
+    <div class="col-sm-8 my-item divcolor">
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Slug)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Slug)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Time)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Time)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+        </div>

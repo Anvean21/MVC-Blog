@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MvcApp.Models.ViewModels.Profiles.ArticleVM>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-sm-8 my-item divcolor justify-content-center  ">
+    <div class="list-group">
+        @foreach (var b in Model)
+        {
+            <div class="col-sm-8 mx-auto">
+                <div class="list-group-item">
+                    <h5 class="text-black-50">@b.Title </h5>
+                    <small class="mb-1">@b.Time</small>
+                    <text> @b.Slug.Substring(0, 200)</text>  @Html.ActionLink("Посмотреть всю статью", "ViewArticle", new { id = b.Id }, new { @class = "btn btn-outline-primary" })  @*
+
+                    @Html.ActionLink("Delete", "DeleteArticle", new { id = b.Id }, new { @class = "delete" }) *@
+                </div>
+            </div>
+            <br />
+            <hr />
+        }
+    </div>
+</div>
+
+<div class="col-2 my-item divcolor">
+
+    @Html.ActionLink("Главная", "Index", "Page", new { @class = "page-link" })
+    @Html.ActionLink("Гостевая", "Guest", "Page", new { @class = "page-link" })
+    @Html.ActionLink("Анкета", "Profile", "Page", new { @class = "page-link" })
+
+    @Html.ActionLink("Пользователи", "ShowProfile", "Page", new { @class = "page-link" })
+</div>
