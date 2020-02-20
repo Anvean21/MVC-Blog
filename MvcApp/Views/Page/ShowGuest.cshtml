@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MvcApp.Models.ViewModels.Profiles.PersonVM>
+﻿@model IEnumerable<MvcApp.Domain.ViewModels.Profiles.PersonVM>
 @{
     ViewBag.Title = "ShowGuest";
 }
@@ -12,9 +12,10 @@
             @foreach (var b in Model)
             {
 
-                <button type="button" class="list-group-item list-group-item-action">
-                    <p class="text-black-50">@b.Name <br /> @b.Text</p>
-                </button>
+            <button type="button" class="list-group-item list-group-item-action">
+                <h4>  @b.Name <br /></h4>
+                <p class="text-black-50">@b.Text</p>
+            </button>
 
             }
         </div>

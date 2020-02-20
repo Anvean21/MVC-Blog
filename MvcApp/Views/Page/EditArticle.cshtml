@@ -1,10 +1,11 @@
 ﻿@model MvcApp.Domain.ViewModels.Profiles.ArticleVM
 
 @{
-    ViewBag.Title = "AddArticle";
+    ViewBag.Title = "EditArticle";
 }
+
     <div class="col-lg-8 my-item divcolor">
-        @using (Html.BeginForm("AddArticle", "Page", FormMethod.Post))
+        @using (Html.BeginForm("EditArticle", "Page", FormMethod.Post))
         {
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-row">
@@ -33,6 +34,10 @@
             </div>
 
 
-            <button type="submit" class="btn btn-success">Add Article</button>
+            <button type="submit" class="btn btn-success">Edit Article</button>
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
         }
     </div>
+        

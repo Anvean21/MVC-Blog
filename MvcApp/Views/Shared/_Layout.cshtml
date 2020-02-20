@@ -40,6 +40,7 @@
                 @Html.ActionLink("Пользователи", "ShowProfile", "Page", new { @class = "page-link" })
             </li>
             <li class="nav-item">
+                
                 @Html.ActionLink("Добавить статью", "AddArticle", "Page", new { @class = "page-link" })
             </li>
         </ul>
@@ -62,6 +63,7 @@
         </div>
     </footer>
     @Scripts.Render("~/bundles/jquery")
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

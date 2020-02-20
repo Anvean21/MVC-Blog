@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace MvcApp.Models.Data
+namespace MvcApp.Domain.Data
 {
     [Table("ProfDTOes")]
     public class ProfDTO

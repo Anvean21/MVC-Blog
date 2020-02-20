@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace MvcApp.Models.Data
+namespace MvcApp.Domain.Data
 {
     [Table("Articles")]
     public class Article
@@ -15,5 +15,7 @@ namespace MvcApp.Models.Data
         public string Title { get; set; }
         public string Slug { get; set; }
         public DateTime Time { get; set; }
+        public string Tag { get; set; }
+       
     }
 }

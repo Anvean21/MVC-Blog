@@ -4,15 +4,31 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace MvcApp.Models.Data
+namespace MvcApp.Domain.Data
 {
     public class ArticleInitializer : DropCreateDatabaseAlways<Db>
     {
         protected override void Seed(Db db)
         {
-            db.Articles.Add(new Article { Title = "Растений", Slug = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.", Time = DateTime.Today });
-            db.Articles.Add(new Article { Title = "Животные", Slug = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.", Time = DateTime.Today });
-            db.Articles.Add(new Article { Title = "Мир", Slug = "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.", Time = DateTime.Today });
+           
+            Article a1 = new Article { Id = 1, Title = "Цветочки", 
+                Time = DateTime.Now,
+                Tag = "Растения", 
+                Slug = "Сегодня трудно представить себе загородный домик, дачу, городской пейзаж без красиво цветущих клумб, ухоженных лужаек и газонов, искусственных прудиков и сада. Оригинальные идеи, которые мы предлагаем вам на страницах этого блога, это максимум удобств, красоты и удовольствия. Красивый уголок в саду или райский оазис среди городской суеты скрасят серые будни и помогут отвлечься от однообразия жизни.Кроме того, декоративные растения способны поднять настроение и вызвать положительные эмоции. Можно прогуливаться узкими садовыми тропинками, которые теряются вдали, любоваться многолетнимы цветами на клумбе с окна кухни, или просто посидеть в тиши на скамейке. И пусть такие минуты длятся долго.Но проводить время с цветами и другими декоративными садовыми растениями можно также, работая в саду. Создание живых изгородей своими руками, поможет укрыться от посторонних глаз и защитится от шума и пыли. Вход в дом может украсить созданный вами розарий.С помощью цветников можно разбить сад на функциональные зоны. С помощью газонов – создать идеальный фон для растений и садовых сооружений. Также вы можете выращивать своими руками овощи, как ради урожая, так и ради декоративных целей. Работа на участке не должна быть обузой. Она должна превратиться в истинное удовольствие.Присоединяйтесь к нам! И можете сами поделиться информацией о растениях, которые растут на вашем участке. Читайте также про посадку, выращивание и уход за плодовыми деревьями и кустарниками." 
+            };
+            Article a2 = new Article { Id = 2, Title = "Джипп", 
+                Time = DateTime.Now,
+                Tag = "Машины",
+                Slug = "Для зажигания горючей смеси в двигателе внутреннего сгорания свеча играет важнейшую роль. При этом неважно, новым ли вы владеете автомобилем или нет, свечи требуют периодических проверок, очисток и замены. В современных автомобилях иностранных производителей мотор закрыт пластиковой перегородкой, но пусть это не пугает автовладельца – самостоятельная замена свечей в этом случае тоже возможна.Выбор автовладельцем новой свечи – занятие ответственное, поскольку от него, во многом, будет зависеть качество работы двигателя. Обращайте внимание на бренд изготовителя и не стесняйтесь проверять работоспособность элементов у продавца. Особенно на автомобильных рынках или же в небольших магазинчиках, где под видом новых свечей продают неисправные. Крупные автомагазины, которые дорожат репутацией, сами предлагают проверку свечей. Они используют каталоги упрощения подбора свечи к вашей модели авто.Если вы новичок в вопросе выбора свечей, ориентируйтесь на два главных компонента – геометрическую форму и калильное число. С формой все ясно - минимум отличий от формы предыдущей, иначе вы не сумеете её вкрутить или электроды не достанут камеры в двигателе. Чересчур длинная свеча тоже губительна для мотора, поскольку это выведет из строя либо свечу, либо ДВС.Калильное число отображает режим нагрева элемента – при низком показателе свеча быстро перегревается. Рекомендованные параметры прописаны в сервисной книге к автомобилю. " 
+            };
+            Article a3 = new Article { Id = 3, Title = "50 способов добиться успеха в блоггинге", 
+                Time = DateTime.Now,
+                Tag = "Лайфхаки",
+                Slug = " 1. Контент план Создание контент плана поможет разработать дальнейшую стратегию и облегчит поэтапную работу. Таким образом, вы определитесь со списком, поиском и распределением тем, типом постов, ознакомитесь с уже развитыми темами блогов в нише, а также будете следить за учетом и контролем выполнения поставленных задач.2. Цель блога Конечно, цель каждой статьи или отдельной темы вашего блога будет разной, но знать цель заранее – уже половина работы. Будь то привлечение новых покупателей, заявка о себе как о лидере ниши, увеличение узнаваемости продукта или рассказ о жизни компании – решите все заранее."
+            };
+            db.Articles.Add(a1);
+            db.Articles.Add(a2);
+            db.Articles.Add(a3);
             base.Seed(db);
         }
     }

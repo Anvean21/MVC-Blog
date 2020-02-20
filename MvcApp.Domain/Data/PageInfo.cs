@@ -1,4 +1,4 @@
-﻿using MvcApp.Models.Data;
+﻿using MvcApp.Domain.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;

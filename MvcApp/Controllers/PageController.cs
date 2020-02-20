@@ -1,30 +1,31 @@
 ﻿using MvcApp.Domain.Data;
-using MvcApp.Models.Data;
-using MvcApp.Models.ViewModels.Profiles;
+
+
+using MvcApp.Domain.ViewModels.Profiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace MvcApp.Controllers
 {
     public class PageController : Controller
     {
-        // GET: Page
+        //IArticleRepository repo;
+        //public PageController(IArticleRepository r)
+        //{
+        //    repo = r;
+        //}
+        //public PageController()
+        //{
+        //    IKernel ninjectKernel = new StandardKernel();
+        //    ninjectKernel.Bind<IArticleRepository>().To<ArticleRepository>();
+        //    repo = ninjectKernel.Get<IArticleRepository>();
+        //}
         [HttpGet]
-        public ActionResult Index(int page = 1)
-        {
-            List<ArticleVM> artlist;
-            using (Db db = new Db())
-            {
-              artlist = db.Articles.ToArray().OrderByDescending(x => x.Id).Select(x => new ArticleVM(x)).ToList();
-            }
-            return View(artlist);
-        }
-        
-         [HttpGet]
-         public ActionResult AddArticle()
+        public ActionResult AddArticle()
         {
             return View();
         }
@@ -35,41 +36,158 @@ namespace MvcApp.Controllers
             {
                 return View(model);
             }
-            using (Db db = new Db())
+            using(Db db = new Db())
             {
-
-
-                Article art = new Article();
-
-
+            Article art = new Article();
                 art.Title = model.Title;
                 art.Slug = model.Slug;
-
                 art.Time = DateTime.Now;
-
+                art.Tag = model.Tag;
                 db.Articles.Add(art);
                 db.SaveChanges();
             }
             return RedirectToAction("Index");
         }
-        public ActionResult DeleteArticle (int id)
+        public ActionResult DeleteArticle(int id)
         {
             using (Db db = new Db())
             {
-                //Получаем user
+                //Получаем 
                 Article art = db.Articles.Find(id);
 
-                //Удаляем user
+                //Удаляем 
                 db.Articles.Remove(art);
 
                 //Сохраним изменения в базе
                 db.SaveChanges();
             }
-            //Добавляем сообщение об успешном удалении user
-            TempData["SM"] = "You`ve deleted a user";
+            //Добавляем сообщение об успешном удалении 
+            TempData["SM"] = "You`ve deleted a Article";
 
             //Переадресация пользователя
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult EditArticle(int id)
+        {
+
+            //Обьявляем модель 
+            ArticleVM model;
+
+            using (Db db = new Db())
+            {
+                //Получаем Id 
+                Article dto = db.Articles.Find(id);
+
+                //(Валидация)
+                if (dto == null)
+                {
+                    return Content("The article does not exist.");
+                }
+
+                // Инициализируем модель данными Article через конструктор в классе artilcleVM
+                model = new ArticleVM(dto);
+            }
+            //Возвращаем модель в представление
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult EditArticle(ArticleVM model)
+        {
+            //Проверяем модель на валидность
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            using (Db db = new Db())
+            {
+                //Получаем id страницы
+                int id = model.Id;
+
+
+                //Получаем страницу по Id
+                Article dto = db.Articles.Find(id);
+                //Присваиваем name из полученной модели в DTO
+
+
+                //Проверяем email на уникальность
+                if (db.Articles.Where(x => x.Id != id).Any(x => x.Title == model.Title))
+                {
+                    ModelState.AddModelError("", "That email already exist.");
+                    return View(model);
+                }
+
+
+                //Присвоить остальные значения в класс DTO
+                dto.Title = model.Title;
+
+                dto.Slug = model.Slug;
+                dto.Tag = model.Tag;
+                dto.Time = DateTime.Now;
+
+                //Сохраняем изменения в базу
+                db.SaveChanges();
+            }
+
+            //Установить сообщение в TempData
+            TempData["SM"] = "You have edited the article.";
+
+            //Переадресация пользователя
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult ViewArticle(int id)
+        {
+            ArticleVM artvm;
+            using (Db db = new Db())
+            {
+                Article art = db.Articles.Find(id);
+                if (art == null)
+                {
+                    return Content("The article is not valid.");
+                }
+                artvm = new ArticleVM(art);
+
+            }
+            return View(artvm);
+        }
+        
+        public ActionResult TagSearch(string tag)
+        {
+            using (Db db = new Db())
+            {
+
+                var allarticles = db.Articles.Where(a => a.Tag.Contains(tag)).ToList();
+                return PartialView(allarticles);
+            }
+        }
+
+        ///////////////////////////////////////////////////////////////////
+
+        [HttpGet]
+        public ActionResult Index(int page = 1)
+        {
+            
+            //List<ArticleVM> artlist;
+            //using (Db db = new Db())
+            //{
+            //    artlist = db.Articles.ToArray().OrderByDescending(x => x.Id).Select(x => new ArticleVM(x)).ToList();
+            //}
+            //return View(artlist);
+            List<Article> artlist ;
+            using (Db db = new Db())
+            {
+                artlist = db.Articles.ToArray().ToList();
+
+            }
+            
+            int pageSize = 3;
+            IEnumerable<Article> articlesPerPages = artlist.Skip((page - 1) * pageSize).Take(pageSize);
+            PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = artlist.Count };
+            IndexViewModel avm = new IndexViewModel { PageInfo = pageInfo, Articles = articlesPerPages };
+            return View(avm);
+           
+
         }
         [HttpGet]
         public ActionResult Profile()
@@ -133,7 +251,9 @@ namespace MvcApp.Controllers
             }
             return View(proflist);
         }
-
+        
+        ////////////////////////////////////////////////////////////////
+      
         [HttpGet]
         public ActionResult Guest()
         {
@@ -254,21 +374,6 @@ namespace MvcApp.Controllers
             //Переадресация пользователя
             return RedirectToAction("ShowProfile");
         }
-        [HttpGet]
-        public ActionResult ViewArticle(int id)
-        {
-            ArticleVM artvm;
-            using (Db db = new Db())
-            {
-                Article art = db.Articles.Find(id);
-                if (art == null)
-                {
-                    return Content("The article is not valid.");
-                }
-                artvm = new ArticleVM(art);
-                
-            }
-            return View(artvm);
-        }
+        
     }
 }

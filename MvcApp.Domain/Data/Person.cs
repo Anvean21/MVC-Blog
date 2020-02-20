@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MvcApp.Models.Data
+namespace MvcApp.Domain.Data
 {
     public class Person
     {

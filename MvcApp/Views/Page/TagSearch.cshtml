@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MvcApp.Domain.Data.Article>
+
+    <div class="col-sm-10 my-item divcolor  ">
+        <div class="list-group">
+                @foreach (var b in Model)
+                {
+                    <div class="col-sm-8 mx-auto">
+                        <div class="list-group-item">
+                            <h5 class="text-black-50">@b.Title</h5>
+                            <small class="mb-1">@b.Time</small>
+                            <br />
+                            <small class="mb-1">@b.Tag</small>
+                            <br />
+                            <text> @b.Slug.Substring(0, 200)...</text>
+                            <br />@Html.ActionLink("Посмотреть всю статью", "ViewArticle", new { id = b.Id }, new { @class = "btn btn-outline-primary" })
+                            <br />
+                            @Html.ActionLink("Delete", "DeleteArticle", new { id = b.Id }, new { @class = "delete" }) |
+                            @Html.ActionLink("Edit", "EditArticle", new { id = b.Id }, new { @class = "edit" })
+                        </div>
+                    </div>
+                    <br />
+                    <hr />
+                }
+           
+        </div>
+    </div>
